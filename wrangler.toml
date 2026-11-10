@@ -1,0 +1,11 @@
+name = "outdoor-time-planner"
+main = "src/worker.js"
+compatibility_date = "2026-11-01"
+
+# Static page for steps 4+ (create ./public when you get there)
+# [assets]
+# directory = "./public"
+# binding = "ASSETS"
+
+# Secret, never committed. Set with:  npx wrangler secret put DATAGOV_API_KEY
+# For local dev put DATAGOV_API_KEY=... in a .dev.vars file (git-ignored).

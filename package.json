@@ -1,0 +1,16 @@
+{
+  "name": "outdoor-time-planner",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4"
+  },
+  "allowScripts": {
+    "workerd@1.20261109.1": true
+  }
+}

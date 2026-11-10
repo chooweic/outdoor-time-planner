@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Outdoor Time Planner</title>
+<style>
+:root{--bg:#fafaf7;--fg:#1c1c1a;--muted:#5d5d57;--card:#fff;--line:#dcdcd4;--go:#1b7a3d;--short:#a66a00;--stay:#b3261e;--accent:#14507a}
+@media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecece6;--muted:#a3a39b;--card:#20201d;--line:#3a3a35;--go:#5fc283;--short:#e8b04a;--stay:#f2877f;--accent:#7fb8e0}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif}
+main{max-width:640px;margin:0 auto;padding:16px}
+h1{font-size:1.4rem;margin:.2em 0}
+h2{font-size:1.05rem;margin:1.4em 0 .4em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin:10px 0}
+.verdict{font-size:1.3rem;font-weight:700}
+.go{color:var(--go)}.go-short{color:var(--short)}.stay-in{color:var(--stay)}
+.muted{color:var(--muted);font-size:.9rem}
+.banner{border:1px solid var(--short);color:var(--short);border-radius:8px;padding:8px 12px;margin:10px 0}
+.banner.err{border-color:var(--stay);color:var(--stay)}
+ul{padding-left:1.1em;margin:.3em 0}
+button{font:inherit;padding:10px 14px;margin:4px 6px 4px 0;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer;min-height:44px}
+button:hover{border-color:var(--accent)}
+input{font:inherit;width:5.5em;padding:6px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--fg)}
+.bars{display:flex;gap:6px;align-items:flex-end;height:70px;margin:8px 0}
+.bar{flex:1;background:var(--accent);opacity:.75;border-radius:4px 4px 0 0;min-height:2px;position:relative}
+.bar span{position:absolute;bottom:-1.3em;left:0;right:0;text-align:center;font-size:.7rem;color:var(--muted)}
+footer{margin:2em 0 1em;font-size:.82rem;color:var(--muted)}
+a{color:var(--accent)}
+</style>
+</head>
+<body>
+<main>
+  <h1>Outdoor Time Planner</h1>
+  <p class="muted">Punggol · plan today's outdoor time around the air. A planning aid, not medical advice.</p>
+  <div id="banners" aria-live="polite"></div>
+
+  <section class="card" id="verdict-card">
+    <div class="verdict" id="verdict">Loading air data…</div>
+    <p id="verdict-text" class="muted"></p>
+    <p id="readings" class="muted"></p>
+    <button id="retry" type="button" hidden>Try again</button>
+  </section>
+
+  <h2>Today's plan</h2>
+  <div id="plan" class="card">Waiting for data…</div>
+
+  <h2>Log outdoor time</h2>
+  <div class="card">
+    <p id="balance-text"></p>
+    <div id="bars" class="bars" aria-label="Minutes outdoors, last 7 days"></div>
+    <div style="margin-top:1.6em">
+      <button data-min="30">+30 min</button><button data-min="60">+60 min</button><button data-min="90">+90 min</button>
+      <button id="undo">Undo last</button>
+    </div>
+    <p id="save-warn" class="muted" hidden>Your browser blocked saving, so this log will be lost when you close the page.</p>
+  </div>
+
+  <details class="card">
+    <summary>Air thresholds (PM2.5, µg/m³, 1-hour)</summary>
+    <p class="muted">NEA defaults: normal up to 55, elevated up to 150, high up to 250. Change them if you want to be stricter. Values must increase.</p>
+    <label>Normal ≤ <input id="t1" type="number" min="1"></label>
+    <label>Elevated ≤ <input id="t2" type="number" min="1"></label>
+    <label>High ≤ <input id="t3" type="number" min="1"></label>
+    <div><button id="t-save">Save</button><button id="t-reset">Reset to NEA</button></div>
+    <p id="t-msg" class="muted"></p>
+  </details>
+
+  <footer>
+    <p>Air and forecast data: NEA via <a href="https://data.gov.sg">data.gov.sg</a>, used under the <a href="https://data.gov.sg/open-data-licence">Singapore Open Data Licence v1.0</a>. Provided "as is" with no warranty. This is not an official NEA, HPB or government service.</p>
+    <p>Official advice: <a href="https://www.haze.gov.sg">haze.gov.sg</a>. Outdoor target: <a href="https://www.healthhub.sg/well-being-and-lifestyle/child-and-teens-health/guide-to-toddler-eye-care">HealthHub (HPB)</a>, at least 2 hours a day. Children are treated as sensitive to haze. Travel times and places are estimates.</p>
+  </footer>
+</main>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

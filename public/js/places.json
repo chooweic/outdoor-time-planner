@@ -1,0 +1,13 @@
+{
+  "_note": "Starter list. travelMinutes are my ESTIMATES by public transport from Punggol: replace them with real figures from your own trips. regions checked against NEA's region table (NEA air pollution FAQ Q3) on 2026-11-10: Punggol Waterway, Sengkang, Pasir Ris, East Coast, Bishan-AMK and Jurong are listed; Coney Island is not listed, so it uses the closest region (north), per NEA's rule. Check any place you add: if it is not in NEA's table, use the closest region. outdoor=true means the time counts as outdoor time for myopia; sheltered means partial rain cover.",
+  "home": { "name": "Punggol", "region": "north" },
+  "places": [
+    { "id": "punggol-waterway", "name": "Punggol Waterway Park", "region": "north", "travelMinutes": 10, "typicalMinutes": 90, "sheltered": true, "outdoor": true },
+    { "id": "coney-island", "name": "Coney Island Park", "region": "north", "travelMinutes": 25, "typicalMinutes": 120, "sheltered": false, "outdoor": true },
+    { "id": "sengkang-riverside", "name": "Sengkang Riverside Park", "region": "north", "travelMinutes": 20, "typicalMinutes": 90, "sheltered": false, "outdoor": true },
+    { "id": "pasir-ris-park", "name": "Pasir Ris Park", "region": "east", "travelMinutes": 35, "typicalMinutes": 120, "sheltered": false, "outdoor": true },
+    { "id": "east-coast-park", "name": "East Coast Park", "region": "east", "travelMinutes": 45, "typicalMinutes": 120, "sheltered": false, "outdoor": true },
+    { "id": "bishan-amk-park", "name": "Bishan-Ang Mo Kio Park", "region": "central", "travelMinutes": 40, "typicalMinutes": 120, "sheltered": true, "outdoor": true },
+    { "id": "jurong-lake", "name": "Jurong Lake Gardens", "region": "west", "travelMinutes": 75, "typicalMinutes": 120, "sheltered": false, "outdoor": true }
+  ]
+}
